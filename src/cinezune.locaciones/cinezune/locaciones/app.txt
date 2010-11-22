@@ -1,0 +1,46 @@
+Do a functional doctest test on the app.
+========================================
+
+.. :doctest:
+.. :layer: cinezune.locaciones.tests.browser_layer
+
+Let's first create an instance of cinezune.locaciones at the top level:
+
+    >>> from cinezune.locaciones.app import cinezune.locaciones
+    >>> root = getRootFolder()
+    >>> root['app'] = cinezune.locaciones()
+
+Run tests in the testbrowser
+----------------------------
+
+The zope.testbrowser.browser module exposes a Browser class that
+simulates a web browser similar to Mozilla Firefox or IE.  We use that
+to test how our application behaves in a browser.  For more
+information, see http://pypi.python.org/pypi/zope.testbrowser.
+
+Create a browser and visit the instance you just created:
+
+    >>> from zope.app.wsgi.testlayer import Browser
+    >>> browser = Browser()
+    >>> browser.open('http://localhost/app')
+
+Check some basic information about the page you visit:
+
+    >>> browser.url
+    'http://localhost/app'
+
+    >>> print browser.contents
+    <html>
+    <head>
+    <base href="http://localhost/app/@@index" />
+    <BLANKLINE>
+    </head>
+    <body>
+      <h1>Congratulations!</h1>
+    <BLANKLINE>
+      <p>Your Grok application is up and running.
+      Edit <code>cinezune.locaciones/app_templates/index.pt</code> to change
+      this page.</p>
+    </body>
+    </html>
+    <BLANKLINE>

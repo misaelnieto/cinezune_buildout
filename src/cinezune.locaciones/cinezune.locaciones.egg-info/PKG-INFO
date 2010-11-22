@@ -1,0 +1,30 @@
+Metadata-Version: 1.0
+Name: cinezune.locaciones
+Version: 0.1
+Summary: Locaciones para cinezune
+Home-page: http://noenieto.com
+Author: Noe Nieto
+Author-email: tzicatl@gmail.com
+License: LGPL v2
+Description:       Descripcion
+              ------------
+              Una locacion es un contenedor de imagenes que controla la manera 
+              en que se accede a las imagenes.
+              
+              Cada locacion tiene campos privados y publicos.
+              
+              Para un usuario anonimo se muestra una lista de imagenes con marca de agua 
+              y en formato pequenho.
+              El administrador puede ver las imagenes en tamanho original.
+        
+Keywords: grok dolmen movie locations
+Platform: UNKNOWN
+Classifier: Development Status :: 1 - Planning
+Classifier: Environment :: Web Environment
+Classifier: Framework :: Buildout
+Classifier: Framework :: Zope3
+Classifier: Framework :: ZODB
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: GNU Library or Lesser General Public License (LGPL)
+Classifier: Natural Language :: Spanish
+Classifier: Topic :: Multimedia :: Graphics :: Presentation

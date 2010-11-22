@@ -1,0 +1,12 @@
+setup.py
+cinezune/__init__.py
+cinezune.locaciones.egg-info/PKG-INFO
+cinezune.locaciones.egg-info/SOURCES.txt
+cinezune.locaciones.egg-info/dependency_links.txt
+cinezune.locaciones.egg-info/namespace_packages.txt
+cinezune.locaciones.egg-info/not-zip-safe
+cinezune.locaciones.egg-info/requires.txt
+cinezune.locaciones.egg-info/top_level.txt
+cinezune/locaciones/__init__.py
+cinezune/locaciones/app.py
+cinezune/locaciones/tests.py
