@@ -1,0 +1,7 @@
+.installed.cfg
+bin/
+develop-eggs/
+extends-cache/
+log/
+parts/
+var/
