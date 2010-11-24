@@ -5,3 +5,4 @@ extends-cache/
 log/
 parts/
 var/
+*.pyc
