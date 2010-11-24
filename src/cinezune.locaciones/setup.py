@@ -42,6 +42,12 @@ setup(name='cinezune.locaciones',
                         'grokui.admin',
                         'z3c.testsetup',
                         'grokcore.startup',
-                        # Add extra requirements here
+                        # Requirements for dolmen
+                        'PIL',
+                        'dolmen.app.site',
+                        'dolmen.app.layout',
+                        'dolmen.app.content',
+                        'dolmen.app.container',
+                        'zope.app.form',
                         ],
       )
