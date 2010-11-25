@@ -3,9 +3,9 @@ grok
 grokui.admin
 z3c.testsetup
 grokcore.startup
-PIL
 dolmen.app.site
 dolmen.app.layout
 dolmen.app.content
 dolmen.app.container
 zope.app.form
+menhir.skin.lightblue

@@ -42,12 +42,13 @@ setup(name='cinezune.locaciones',
                         'grokui.admin',
                         'z3c.testsetup',
                         'grokcore.startup',
-                        # Requirements for dolmen
-                        'PIL',
+                        # Dolmen -- Base requirements
                         'dolmen.app.site',
                         'dolmen.app.layout',
                         'dolmen.app.content',
                         'dolmen.app.container',
                         'zope.app.form',
+                        # Dolmen -- Skin
+                        'menhir.skin.lightblue',
                         ],
       )
