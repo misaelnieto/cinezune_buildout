@@ -6,3 +6,6 @@ log/
 parts/
 var/
 *.pyc
+.mr.developer.cfg
+mr-developer/
+
