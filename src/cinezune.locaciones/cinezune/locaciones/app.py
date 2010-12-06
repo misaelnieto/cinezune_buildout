@@ -12,10 +12,11 @@ from dolmen.file import ImageField
 from dolmen.blob import BlobProperty
 from dolmen import content
 
+from cinezune.locaciones import LocacionesMessageFactory as _
 
 class Locaciones(Dolmen):
     content.nofactory()
-    title= u"Cinezune Locations site"
+    title= _(u"Cinezune Locations site")
 
 class ILocation (Interface):
     contains('.IPicture')
@@ -42,17 +43,18 @@ class ILocation (Interface):
         )
 
 class Location (content.Container):
-    grok.implements('ILocation')
+    grok.implements(ILocation)
     content.schema(ILocation)
     content.name(u'A Location with photos')
     content.require('Dolmen.content.Add')
     image = BlobProperty(ILocation['sketch'])
 
-class IPicture(Interface):
+class IPicture(content.IBaseContent):
     """A Picture of a location
     """
-    title = schema.TextLine(
-            title=_(u"Title"),
+    description = schema.Text(
+        title=_(u"Private description"),
+        description=_(u"This is a private description of a location. This information will not be public.")
         )
 
     image = ImageField(
@@ -61,7 +63,7 @@ class IPicture(Interface):
             required=True,
         )
 
-class Picture(content.IBaseContent):
+class Picture(content.Content):
     content.schema(IPicture)
     content.name(u'A photo of the location')
     content.require('Dolmen.content.Add')

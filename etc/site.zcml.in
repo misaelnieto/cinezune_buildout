@@ -31,20 +31,4 @@
              principal="zope.manager" />
    </configure>
 
-  <include package="zope.i18n" />
-  <include package="grokui.admin" />
-  <include package="dolmen.app.site" />
-  <include package="dolmen.app.layout" />
-  <include package="dolmen.app.content" />
-  <include package="dolmen.app.container" />
-
-  <include package="menhir.skin.lightblue" />
-
-  <!-- Skin  -->
-  <includeOverrides
-      package="menhir.skin.lightblue"
-      file="skin.zcml"
-      />
-
-
 </configure>

@@ -3,9 +3,15 @@ grok
 grokui.admin
 z3c.testsetup
 grokcore.startup
+zope.app.form
+zope.container
+zope.interface
+zope.schema
 dolmen.app.site
 dolmen.app.layout
 dolmen.app.content
 dolmen.app.container
-zope.app.form
+menhir.contenttype.image
+dolmen.blob
+dolmen.file
 menhir.skin.lightblue

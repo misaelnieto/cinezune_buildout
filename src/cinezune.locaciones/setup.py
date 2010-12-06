@@ -8,12 +8,12 @@ setup(name='cinezune.locaciones',
       long_description="""\
       Descripcion
       ------------
-      Una locacion es un contenedor de imagenes que controla la manera 
+      Una locacion es un contenedor de imagenes que controla la manera
       en que se accede a las imagenes.
-      
+
       Cada locacion tiene campos privados y publicos.
-      
-      Para un usuario anonimo se muestra una lista de imagenes con marca de agua 
+
+      Para un usuario anonimo se muestra una lista de imagenes con marca de agua
       y en formato pequenho.
       El administrador puede ver las imagenes en tamanho original.
 """,
@@ -42,12 +42,19 @@ setup(name='cinezune.locaciones',
                         'grokui.admin',
                         'z3c.testsetup',
                         'grokcore.startup',
+                        'zope.app.form',
+                        'zope.container',
+                        'zope.interface',
+                        'zope.schema',
                         # Dolmen -- Base requirements
                         'dolmen.app.site',
                         'dolmen.app.layout',
                         'dolmen.app.content',
                         'dolmen.app.container',
-                        'zope.app.form',
+                        'menhir.contenttype.image',
+                        'dolmen.blob',
+                        'dolmen.file',
+
                         # Dolmen -- Skin
                         'menhir.skin.lightblue',
                         ],
