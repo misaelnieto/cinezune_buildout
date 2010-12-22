@@ -11,6 +11,7 @@ from dolmen.app.site import Dolmen
 from dolmen.file import ImageField
 from dolmen.blob import BlobProperty
 from dolmen import content
+from dolmen.app.security.content import CanAddContent
 
 from cinezune.locaciones import LocacionesMessageFactory as _
 
@@ -20,6 +21,9 @@ class Locaciones(Dolmen):
 
 class ILocation (Interface):
     contains('.IPicture')
+    title = schema.TextLine( title=_(u"Location title"),
+                             description = _(u"Give a title of the site")
+                             )
     private_description = schema.Text(
         title=_(u"Private description"),
         description=_(u"This is a private description of a location. This information will not be public.")
@@ -46,8 +50,8 @@ class Location (content.Container):
     grok.implements(ILocation)
     content.schema(ILocation)
     content.name(u'A Location with photos')
-    content.require('Dolmen.content.Add')
-    image = BlobProperty(ILocation['sketch'])
+    content.require(CanAddContent)
+    sketch = BlobProperty(ILocation['sketch'])
 
 class IPicture(content.IBaseContent):
     """A Picture of a location
@@ -66,5 +70,5 @@ class IPicture(content.IBaseContent):
 class Picture(content.Content):
     content.schema(IPicture)
     content.name(u'A photo of the location')
-    content.require('Dolmen.content.Add')
+    content.require(CanAddContent)
     image = BlobProperty(IPicture['image'])

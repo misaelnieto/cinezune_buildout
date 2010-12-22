@@ -2,6 +2,7 @@
            xmlns:grok="http://namespaces.zope.org/grok">
   <include package="grok" />
 
+  <include package="zope.dublincore" />
   <include package="zope.i18n" />
   <include package="grokui.admin" />
   <include package="dolmen.app.site" />
@@ -12,14 +13,16 @@
   <include package="zope.browserresource" file="meta.zcml" />
   <include package="zope.browserresource" />
   <include package="menhir.contenttype.image" />
-  <include package="menhir.skin.lightblue" />
+
+  <includeDependencies package="." />
+  <grok:grok package="." />
 
   <!-- Skin  -->
+  <include package="menhir.skin.lightblue" />
   <includeOverrides
       package="menhir.skin.lightblue"
       file="skin.zcml"
       />
 
-  <includeDependencies package="." />
-  <grok:grok package="." />
+
 </configure>
