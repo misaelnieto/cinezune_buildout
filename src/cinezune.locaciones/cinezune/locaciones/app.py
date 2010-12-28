@@ -8,19 +8,44 @@ import grok
 
 #dolmen stuff
 from dolmen.app.site import Dolmen
+from dolmen.app.content import icon
 from dolmen.file import ImageField
 from dolmen.blob import BlobProperty
 from dolmen import content
 from dolmen.app.security.content import CanAddContent
+from dolmen.app.layout import models
 
+#menhir imports
+from menhir.contenttype.image import IImage, Image
+
+#cinezune stuff
 from cinezune.locaciones import LocacionesMessageFactory as _
 
 class Locaciones(Dolmen):
     content.nofactory()
-    title= _(u"Cinezune Locations site")
+    title= _(u"Cinezune")
+
+class LocacionesIndex(models.Index):
+    grok.context(Locaciones)
+
+class IPicture(IImage):
+    """A Picture of a location
+    """
+    description = schema.Text(
+        title=_(u"Private description"),
+        description=_(u"This is a private description of a location. This information will not be public.")
+        )
+
+
+class Picture(Image):
+    """A simple image storing its data in a blob.
+    """
+    content.name(u'A photo of the location')
+    content.schema(IPicture)
+
 
 class ILocation (Interface):
-    contains('.IPicture')
+    contains(IPicture)
     title = schema.TextLine( title=_(u"Location title"),
                              description = _(u"Give a title of the site")
                              )
@@ -53,22 +78,3 @@ class Location (content.Container):
     content.require(CanAddContent)
     sketch = BlobProperty(ILocation['sketch'])
 
-class IPicture(content.IBaseContent):
-    """A Picture of a location
-    """
-    description = schema.Text(
-        title=_(u"Private description"),
-        description=_(u"This is a private description of a location. This information will not be public.")
-        )
-
-    image = ImageField(
-            title=_(u"Picture"),
-            description=_(u"Please upload an image"),
-            required=True,
-        )
-
-class Picture(content.Content):
-    content.schema(IPicture)
-    content.name(u'A photo of the location')
-    content.require(CanAddContent)
-    image = BlobProperty(IPicture['image'])
