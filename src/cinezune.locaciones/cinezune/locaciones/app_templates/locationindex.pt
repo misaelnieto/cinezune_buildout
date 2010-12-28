@@ -1,0 +1,7 @@
+<tal:block i18n:domain="cinezune.locaciones">
+
+  <h1 tal:condition="context/title"
+      tal:content="context/title">Title</h1>
+  <p>Aqui va un listado de las fotos de esta locacion</p>
+
+</tal:block>

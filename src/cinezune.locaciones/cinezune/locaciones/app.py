@@ -12,7 +12,7 @@ from dolmen.app.content import icon
 from dolmen.file import ImageField
 from dolmen.blob import BlobProperty
 from dolmen import content
-from dolmen.app.security.content import CanAddContent
+from dolmen.app.security.content import CanAddContent, CanViewContent
 from dolmen.app.layout import models
 
 #menhir imports
@@ -27,6 +27,7 @@ class Locaciones(Dolmen):
 
 class LocacionesIndex(models.Index):
     grok.context(Locaciones)
+    content.require(CanViewContent)
 
 class IPicture(IImage):
     """A Picture of a location
@@ -78,3 +79,6 @@ class Location (content.Container):
     content.require(CanAddContent)
     sketch = BlobProperty(ILocation['sketch'])
 
+class LocationIndex(models.Index):
+    grok.context(Location)
+    content.require(CanViewContent)
