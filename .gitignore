@@ -8,4 +8,5 @@ var/
 *.pyc
 .mr.developer.cfg
 mr-developer/
+CineZune.wpr
 
