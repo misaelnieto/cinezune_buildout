@@ -2,6 +2,15 @@
 
   <h1 tal:condition="context/title"
       tal:content="context/title">Title</h1>
-  <p>Aqui va un listado de las fotos de esta locacion</p>
+  <p tal:condition="context/values">Aqui va un listado de las fotos de esta locacion</p>
+  <ul tal:condition="context/values">
+  <li tal:repeat="item context/values">
+      <a href="#"
+         tal:attributes="href python: view.url(item)"
+         tal:content="item/title">Item title</a>
+      </li>
+  </ul>
+  <p tal:condition="not: context/values">No hay fotos ...</p>
+
 
 </tal:block>
