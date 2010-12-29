@@ -1,0 +1,41 @@
+<tal:block i18n:domain="cinezune.locaciones">
+
+  <h1 tal:condition="context/title"
+      tal:content="context/title">Title</h1>
+  <dl>
+    <dt i18n:translate="">Private Description</dt>
+    <dd tal:content="context/private_description">data</dd>
+
+    <dt i18n:translate="">Location address</dt>
+    <dd tal:content="context/address">data</dd>
+
+    <dt i18n:translate="">Google Map</dt>
+    <dd><a href="#"
+           tal:content="context/map_url"
+           tal:attributes="href context/map_url">map url</a></dd>
+
+    <dt i18n:translate="">Sketch map</dt>
+    <dd>
+	   <div class="image">
+	    <a href="" class="image-link"
+		   tal:attributes="href view/sketch_popup_url;
+			 	           title context/title">
+		  <img tal:attributes="src view/sketch_preview" />
+	    </a>
+	   </div>
+       <p class="download">
+         <a href=""
+            title="Download this map"
+            i18n:translate=""
+            i18n:attributes="title"
+            tal:attributes="href view/sketch_download_url;"
+       >Download this map</a>
+       &mdash;
+       <span tal:content="view/sketch_size" />
+       </p>
+    </dd>
+
+  </dl>
+
+
+</tal:block>

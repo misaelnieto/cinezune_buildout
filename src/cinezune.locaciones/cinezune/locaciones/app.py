@@ -2,21 +2,24 @@
 from zope.interface import Interface
 from zope.container.constraints import contains
 from zope import schema
+from zope.size import ISized
 
 #grok stuff
 import grok
 
 #dolmen stuff
+from dolmen import menu
 from dolmen.app.site import Dolmen
-from dolmen.app.content import icon
 from dolmen.file import ImageField
 from dolmen.blob import BlobProperty
 from dolmen import content
-from dolmen.app.security.content import CanAddContent, CanViewContent
+from dolmen.app.security.content import CanAddContent, CanViewContent, CanListContent
 from dolmen.app.layout import models
+from dolmen.app.container import listing
+from dolmen.app import layout
 
 #menhir imports
-from menhir.contenttype.image import IImage, Image
+from menhir.contenttype.image import IImage, Image, ImagePopup
 
 #cinezune stuff
 from cinezune.locaciones import LocacionesMessageFactory as _
@@ -82,3 +85,21 @@ class Location (content.Container):
 class LocationIndex(models.Index):
     grok.context(Location)
     content.require(CanViewContent)
+    @property
+    def values(self):
+        return dict(self.context.values())
+
+@menu.menuentry(layout.ContextualMenu, order=15)
+class LocationExtraInfo(models.Page):
+    grok.title(_(u"Info privada"))
+    grok.context(Location)
+    content.require(CanListContent)
+
+    def content(self):
+        ImagePopup.need()
+        url = self.url(self.context)
+        self.sketch_size = ISized(self.context.sketch).sizeForDisplay()
+        self.sketch_preview = "%s/++thumbnail++sketch.preview" % url
+        self.sketch_popup_url = "%s/++thumbnail++sketch.large" % url
+        self.sketch_download_url = "%s/++download++sketch" % url
+        return super(models.Page,self).content()
